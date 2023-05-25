@@ -8,7 +8,9 @@ require('dotenv').config();
 const API_KEY = process.env.API;
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
 
 const weatherData = {
     weatherLoc1: [
