@@ -19,7 +19,7 @@ const weatherData = {
             gas: 4
         }
     ],
-    weatherLoc2: [
+    weatherLoc2: [  
         {
             temp: 12,
             humidity: 78,
@@ -36,6 +36,7 @@ const weatherData = {
 // req: Weather data
 
 app.get('/api/weatherLoc1', (req, res) => {
+    console.log("Got Request");
     res.send(weatherData.weatherLoc1);
 });
 
