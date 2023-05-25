@@ -3,8 +3,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
+require('dotenv').config();
 
-const API_KEY = '7IqFIKxwsjsv0flp';
+const API_KEY = process.env.API;
 
 app.use(bodyParser.json());
 app.use(cors());
