@@ -48,7 +48,7 @@ app.get('/api/weatherLoc2', (req, res) => {
 
 app.post('/api/setData1', (req, res) => {
     if(req.body.api_key === API_KEY) {
-        weatherData.weatherLoc1[0] = req.body.temp;
+        weatherData.weatherLoc1["temp"] = req.body.temp;
         weatherData.weatherLoc1[1] = req.body.humidity;
         weatherData.weatherLoc1[2] = req.body.bar;
         weatherData.weatherLoc1[3] = req.body.gas;
