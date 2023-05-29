@@ -16,14 +16,16 @@ const weatherData1 = {
     "temp": 23,
     "humidity": 12,
     "bar": 30,
-    "gas": 4
+    "gas": 4,
+    "updated": getDate()
  }
 
 const weatherData2 = {
     "temp": 12,
     "humidity": 78,
     "bar": 23,
-    "gas": 8
+    "gas": 8,
+    "updated": getDate()
 }
 
 // GET => /api/weather ==> Connection to frontend
@@ -47,6 +49,7 @@ app.post('/api/setData1', (req, res) => {
         weatherData1["humidity"] = req.body.humidity;
         weatherData1["bar"] = req.body.bar;
         weatherData1["gas"] = req.body.gas;
+        weatherData1["updated"] = getDate();
         res.json('Got weather data');
     } else {
         res.json('Wrong API key')
@@ -59,6 +62,7 @@ app.post('/api/setData2', (req, res) => {
         weatherData2["humidity"] = req.body.humidity;
         weatherData2["bar"] = req.body.bar;
         weatherData2["gas"] = req.body.gas;
+        weatherData2["updated"] = getDate();
         res.json('Got weather data');
     } else {
         res.json('Wrong API key')
@@ -68,3 +72,11 @@ app.post('/api/setData2', (req, res) => {
 app.listen(process.env.PORT || 3000, () => {
     console.log(`App is running on port ${process.env.PORT}`)
 });
+
+function getDate() {
+    const date = new Date();
+    const timeHour = date.getHours();
+    const timeMinutes = date.getMinutes();
+
+    return `${timeHour}:${timeMinutes}`;
+}
