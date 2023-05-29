@@ -12,23 +12,18 @@ app.use(cors({
     origin: '*'
 }));
 
-const weatherData = {
-    weatherLoc1: [
-        {
-            temp: 23,
-            humidity: 12,
-            bar: 30,
-            gas: 4
-        }
-    ],
-    weatherLoc2: [  
-        {
-            temp: 12,
-            humidity: 78,
-            bar: 23,
-            gas: 8
-        }
-    ],
+const weatherData1 = {
+    "temp": 23,
+    "humidity": 12,
+    "bar": 30,
+    "gas": 4
+ }
+
+const weatherData2 = {
+    "temp": 12,
+    "humidity": 78,
+    "bar": 23,
+    "gas": 8
 }
 
 // GET => /api/weather ==> Connection to frontend
@@ -39,19 +34,19 @@ const weatherData = {
 
 app.get('/api/weatherLoc1', (req, res) => {
     console.log("Got Request");
-    res.send(weatherData.weatherLoc1);
+    res.send(weatherData1);
 });
 
 app.get('/api/weatherLoc2', (req, res) => {
-    res.json(weatherData.weatherLoc2);
+    res.json(weatherData2);
 });
 
 app.post('/api/setData1', (req, res) => {
     if(req.body.api_key === API_KEY) {
-        weatherData.weatherLoc1["temp"] = req.body.temp;
-        weatherData.weatherLoc1[1] = req.body.humidity;
-        weatherData.weatherLoc1[2] = req.body.bar;
-        weatherData.weatherLoc1[3] = req.body.gas;
+        weatherData1["temp"] = req.body.temp;
+        weatherData1["humidity"] = req.body.humidity;
+        weatherData1["bar"] = req.body.bar;
+        weatherData1["gas"] = req.body.gas;
         res.json('Got weather data');
     } else {
         res.json('Wrong API key')
@@ -60,10 +55,10 @@ app.post('/api/setData1', (req, res) => {
 
 app.post('/api/setData2', (req, res) => {
     if(req.body.api_key === API_KEY) {
-        weatherData.weatherLoc2[0] = req.body.temp;
-        weatherData.weatherLoc2[1] = req.body.humidity;
-        weatherData.weatherLoc2[2] = req.body.bar;
-        weatherData.weatherLoc2[3] = req.body.gas;
+        weatherData2["temp"] = req.body.temp;
+        weatherData2["humidity"] = req.body.humidity;
+        weatherData2["bar"] = req.body.bar;
+        weatherData2["gas"] = req.body.gas;
         res.json('Got weather data');
     } else {
         res.json('Wrong API key')
