@@ -75,8 +75,9 @@ app.listen(process.env.PORT || 3000, () => {
 
 function getDate() {
     const date = new Date();
+    date.setHours(date.getHours() + 2);
     const timeHour = date.getHours();
-    const timeMinutes = date.getMinutes();
+    const timeMinutes = date.getMinutes().toString().padStart(2, '0');
 
     return `${timeHour}:${timeMinutes}`;
 }
